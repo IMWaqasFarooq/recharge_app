@@ -1,0 +1,6 @@
+{
+  "id": 2,
+  "name": "John Doe",
+  "balance": 5000,
+  "is_verified": true
+}
