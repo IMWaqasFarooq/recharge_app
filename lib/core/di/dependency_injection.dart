@@ -5,6 +5,9 @@ import 'package:recharge_app/features/recharge/data/data_sources/local/recharge_
 import 'package:recharge_app/features/recharge/data/data_sources/remote/recharge_remote_data_source.dart';
 import 'package:recharge_app/features/recharge/domain/use_cases/add_beneficiary_use_case.dart';
 import 'package:recharge_app/features/recharge/domain/use_cases/get_beneficiaries_use_case.dart';
+import 'package:recharge_app/features/recharge/domain/use_cases/recharge_history_use_case.dart';
+import 'package:recharge_app/features/recharge/presentation/ui/home/tabs/history/bloc/history_bloc.dart';
+import 'package:recharge_app/features/recharge/presentation/ui/top_up/bloc/top_up_bloc.dart';
 
 import '../../features/login/data/data_sources/remote/login_remote_data_source.dart';
 import '../../features/login/data/data_sources/remote/login_remote_data_source_impl.dart';
@@ -18,7 +21,7 @@ import '../../features/recharge/data/data_sources/remote/recharge_remote_data_so
 import '../../features/recharge/data/repositories/recharge_repository_impl.dart';
 import '../../features/recharge/domain/repositories/recharge_repository.dart';
 import '../../features/recharge/domain/use_cases/recharge_use_case.dart';
-import '../../features/recharge/presentation/ui/tabs/recharge/bloc/recharge_bloc.dart';
+import '../../features/recharge/presentation/ui/home/tabs/recharge/bloc/recharge_bloc.dart';
 
 
 
@@ -96,14 +99,23 @@ Future<void> init() async {
   sl.registerLazySingleton(() => RechargeUseCase(rechargeRepository: sl()));
   sl.registerLazySingleton(() => AddBeneficiaryUseCase(rechargeRepository: sl()));
   sl.registerLazySingleton(() => GetBeneficiariesUseCase(rechargeRepository: sl()));
+  sl.registerLazySingleton(() => RechargeHistoryUseCase(rechargeRepository: sl()));
+
 
 
   // Presentation
   // BLoC
   sl.registerFactory(() => RechargeBloc(
-      rechargeUseCase: sl(),
       getBeneficiariesUseCase:sl(),
       addBeneficiaryUseCase: sl(),
+  ));
+
+  sl.registerFactory(() => TopUpBloc(
+    rechargeUseCase: sl(),
+  ));
+
+  sl.registerFactory(() => HistoryBloc(
+    rechargeHistoryUseCase: sl(),
   ));
 
 }

@@ -4,7 +4,7 @@ part of 'recharge_bloc.dart';
 abstract class RechargeEvent {}
 
 class AddBeneficiaryEvent extends RechargeEvent{
-  final Beneficiary beneficiary;
+  final BeneficiaryModel beneficiary;
 
   AddBeneficiaryEvent({
     required this.beneficiary,

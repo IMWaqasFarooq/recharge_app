@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../domain/entity/beneficiary.dart';
+import '../../../../data/model/benificiary/beneficiary_model.dart';
 
-Future<Beneficiary?> showAddBeneficiaryDialog(BuildContext context) async {
+
+Future<BeneficiaryModel?> showAddBeneficiaryDialog(BuildContext context) async {
   final _formKey = GlobalKey<FormState>();
   String nickname = '';
   String phoneNumber = '+971';
 
-  return showDialog<Beneficiary>(
+  return showDialog<BeneficiaryModel>(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
@@ -104,9 +105,15 @@ Future<Beneficiary?> showAddBeneficiaryDialog(BuildContext context) async {
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
-                Beneficiary newBeneficiary = Beneficiary(
+
+                final now = DateTime.now();
+                String currentRechargeDate = "${now.year.toString().padLeft(4, '0')}${now.month.toString().padLeft(2, '0')}";
+                BeneficiaryModel newBeneficiary = BeneficiaryModel(
                   nickname: nickname,
                   phoneNumber: phoneNumber,
+                  totalRechargeThisMonth: 0,
+                  lastRechargeDate: currentRechargeDate,
+
                 );
                 Navigator.of(context).pop(newBeneficiary);
               }

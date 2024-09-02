@@ -1,35 +1,38 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'beneficiary.dart';
+part of 'recharge_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class BeneficiaryAdapter extends TypeAdapter<Beneficiary> {
+class RechargeModelAdapter extends TypeAdapter<RechargeModel> {
   @override
-  final int typeId = 0;
+  final int typeId = 1;
 
   @override
-  Beneficiary read(BinaryReader reader) {
+  RechargeModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Beneficiary(
-      nickname: fields[0] as String,
-      phoneNumber: fields[1] as String,
+    return RechargeModel(
+      beneficiary: fields[0] as BeneficiaryModel,
+      amount: fields[1] as int,
+      date: fields[2] as DateTime,
     );
   }
 
   @override
-  void write(BinaryWriter writer, Beneficiary obj) {
+  void write(BinaryWriter writer, RechargeModel obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
-      ..write(obj.nickname)
+      ..write(obj.beneficiary)
       ..writeByte(1)
-      ..write(obj.phoneNumber);
+      ..write(obj.amount)
+      ..writeByte(2)
+      ..write(obj.date);
   }
 
   @override
@@ -38,7 +41,7 @@ class BeneficiaryAdapter extends TypeAdapter<Beneficiary> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is BeneficiaryAdapter &&
+      other is RechargeModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

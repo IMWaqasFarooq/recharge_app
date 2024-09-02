@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:recharge_app/features/recharge/presentation/ui/recharge_page.dart';
+import 'package:recharge_app/features/recharge/presentation/ui/home/home_page.dart';
 
 import '../../../../core/di/dependency_injection.dart';
 import '../../../../core/functions/navigations.dart';
@@ -42,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
         listener: (context, state) {
           // TODO: implement listener
           if (state.isSuccess ?? false) {
-            navigateAndReplace(context: context, widget: RechargePage());
+            navigateAndReplace(context: context, widget: HomePage());
           } else if (state.error!.isNotEmpty) {
             Fluttertoast.showToast(msg: state.error ?? "error");
           }

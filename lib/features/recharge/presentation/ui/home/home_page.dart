@@ -5,20 +5,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:recharge_app/core/services/secure_storage.dart';
 import 'package:recharge_app/features/login/presentation/ui/login_page.dart';
-import 'package:recharge_app/features/recharge/presentation/ui/tabs/history/history_tab.dart';
-import 'package:recharge_app/features/recharge/presentation/ui/tabs/recharge/recharge_tab.dart';
-import 'package:recharge_app/features/recharge/presentation/ui/widgets/header_widget.dart';
+import 'package:recharge_app/features/recharge/presentation/ui/home/tabs/history/history_tab.dart';
+import 'package:recharge_app/features/recharge/presentation/ui/home/tabs/recharge/recharge_tab.dart';
+import 'package:recharge_app/features/recharge/presentation/ui/home/widgets/header_widget.dart';
 
-import '../../../../core/functions/navigations.dart';
 
-class RechargePage extends StatefulWidget {
-  const RechargePage({super.key});
+import '../../../../../core/functions/navigations.dart';
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  _RechargePageState createState() => _RechargePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _RechargePageState extends State<RechargePage>
+class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
 

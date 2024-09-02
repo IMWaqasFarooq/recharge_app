@@ -3,12 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:recharge_app/core/di/dependency_injection.dart';
+import 'package:recharge_app/core/functions/navigations.dart';
 import 'package:recharge_app/core/widgets/button_widget.dart';
-import 'package:recharge_app/features/recharge/domain/use_cases/get_beneficiaries_use_case.dart';
-import 'package:recharge_app/features/recharge/domain/use_cases/recharge_use_case.dart';
+import 'package:recharge_app/features/recharge/presentation/ui/top_up/top_up_page.dart';
 
-import '../../../../../../core/di/dependency_injection.dart';
-import '../../../../domain/entity/beneficiary.dart';
+import '../../../../../data/model/benificiary/beneficiary_model.dart';
 import '../../widgets/add_beneficairy_dialog.dart';
 import 'bloc/recharge_bloc.dart';
 
@@ -21,7 +21,7 @@ class RechargeTab extends StatefulWidget {
 
 class _RechargeTabState extends State<RechargeTab> {
   late RechargeBloc _bloc;
-  List<Beneficiary> beneficiariesList = [];
+  List<BeneficiaryModel> beneficiariesList = [];
 
   @override
   void initState() {
@@ -100,7 +100,7 @@ class _RechargeTabState extends State<RechargeTab> {
                                     ButtonWidget(
                                       text: "Recharge",
                                       onPressed: () {
-                                        // Handle recharge button press
+                                        navigateAndPush(context: context, widget: TopUpPage(beneficiary: beneficiary,));
                                       },
                                     ),
                                   ],
@@ -122,7 +122,7 @@ class _RechargeTabState extends State<RechargeTab> {
                       ),
                 floatingActionButton: FloatingActionButton(
                   onPressed: () async {
-                    Beneficiary? newBeneficiary =
+                    BeneficiaryModel? newBeneficiary =
                         await showAddBeneficiaryDialog(context);
                     if (newBeneficiary != null) {
                       _bloc.add(

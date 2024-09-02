@@ -6,7 +6,7 @@ class RechargeState with _$RechargeState {
   const factory RechargeState({
     bool? isLoading,
      String? beneficiaryError,beneficiarySuccess,
-    List<Beneficiary>? beneficiariesList,
+    List<BeneficiaryModel>? beneficiariesList,
   }) = _RechargeState;
 
   factory RechargeState.initial() => const RechargeState(

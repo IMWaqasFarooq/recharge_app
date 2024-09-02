@@ -19,7 +19,7 @@ mixin _$RechargeState {
   bool? get isLoading => throw _privateConstructorUsedError;
   String? get beneficiaryError => throw _privateConstructorUsedError;
   dynamic get beneficiarySuccess => throw _privateConstructorUsedError;
-  List<Beneficiary>? get beneficiariesList =>
+  List<BeneficiaryModel>? get beneficiariesList =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -37,7 +37,7 @@ abstract class $RechargeStateCopyWith<$Res> {
       {bool? isLoading,
       String? beneficiaryError,
       dynamic beneficiarySuccess,
-      List<Beneficiary>? beneficiariesList});
+      List<BeneficiaryModel>? beneficiariesList});
 }
 
 /// @nodoc
@@ -74,7 +74,7 @@ class _$RechargeStateCopyWithImpl<$Res, $Val extends RechargeState>
       beneficiariesList: freezed == beneficiariesList
           ? _value.beneficiariesList
           : beneficiariesList // ignore: cast_nullable_to_non_nullable
-              as List<Beneficiary>?,
+              as List<BeneficiaryModel>?,
     ) as $Val);
   }
 }
@@ -91,7 +91,7 @@ abstract class _$$RechargeStateImplCopyWith<$Res>
       {bool? isLoading,
       String? beneficiaryError,
       dynamic beneficiarySuccess,
-      List<Beneficiary>? beneficiariesList});
+      List<BeneficiaryModel>? beneficiariesList});
 }
 
 /// @nodoc
@@ -125,7 +125,7 @@ class __$$RechargeStateImplCopyWithImpl<$Res>
       beneficiariesList: freezed == beneficiariesList
           ? _value._beneficiariesList
           : beneficiariesList // ignore: cast_nullable_to_non_nullable
-              as List<Beneficiary>?,
+              as List<BeneficiaryModel>?,
     ));
   }
 }
@@ -137,7 +137,7 @@ class _$RechargeStateImpl implements _RechargeState {
       {this.isLoading,
       this.beneficiaryError,
       this.beneficiarySuccess,
-      final List<Beneficiary>? beneficiariesList})
+      final List<BeneficiaryModel>? beneficiariesList})
       : _beneficiariesList = beneficiariesList;
 
   @override
@@ -146,9 +146,9 @@ class _$RechargeStateImpl implements _RechargeState {
   final String? beneficiaryError;
   @override
   final dynamic beneficiarySuccess;
-  final List<Beneficiary>? _beneficiariesList;
+  final List<BeneficiaryModel>? _beneficiariesList;
   @override
-  List<Beneficiary>? get beneficiariesList {
+  List<BeneficiaryModel>? get beneficiariesList {
     final value = _beneficiariesList;
     if (value == null) return null;
     if (_beneficiariesList is EqualUnmodifiableListView)
@@ -197,7 +197,7 @@ abstract class _RechargeState implements RechargeState {
       {final bool? isLoading,
       final String? beneficiaryError,
       final dynamic beneficiarySuccess,
-      final List<Beneficiary>? beneficiariesList}) = _$RechargeStateImpl;
+      final List<BeneficiaryModel>? beneficiariesList}) = _$RechargeStateImpl;
 
   @override
   bool? get isLoading;
@@ -206,7 +206,7 @@ abstract class _RechargeState implements RechargeState {
   @override
   dynamic get beneficiarySuccess;
   @override
-  List<Beneficiary>? get beneficiariesList;
+  List<BeneficiaryModel>? get beneficiariesList;
   @override
   @JsonKey(ignore: true)
   _$$RechargeStateImplCopyWith<_$RechargeStateImpl> get copyWith =>

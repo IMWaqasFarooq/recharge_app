@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recharge_app/features/login/presentation/ui/login_page.dart';
-import 'package:recharge_app/features/recharge/presentation/ui/recharge_page.dart';
+import 'package:recharge_app/features/recharge/presentation/ui/home/home_page.dart';
 
 import 'core/services/hive/hive_service.dart';
 import 'core/services/secure_storage.dart';
@@ -14,7 +14,7 @@ Future<void> main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   await di.init();
 
-  final appState = SecureStorage();
+  final appState =  await SecureStorage().initializePersistedState();
 
   await HiveService().init();
 
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SecureStorage().userID ==0? LoginPage():RechargePage(),
+      home: SecureStorage().userID ==0? LoginPage():HomePage(),
     );
     });
   }

@@ -1,22 +1,23 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:recharge_app/features/recharge/domain/use_cases/add_beneficiary_use_case.dart';
+import 'package:recharge_app/features/recharge/domain/use_cases/get_beneficiaries_use_case.dart';
+import 'package:recharge_app/features/recharge/domain/use_cases/recharge_use_case.dart';
 
-import '../../../../../domain/entity/beneficiary.dart';
-import '../../../../../domain/use_cases/add_beneficiary_use_case.dart';
-import '../../../../../domain/use_cases/get_beneficiaries_use_case.dart';
-import '../../../../../domain/use_cases/recharge_use_case.dart';
+import '../../../../../../data/model/benificiary/beneficiary_model.dart';
+
+
 
 part 'recharge_event.dart';
 part 'recharge_state.dart';
 part 'recharge_bloc.freezed.dart';
 
 class RechargeBloc extends Bloc<RechargeEvent, RechargeState> {
-  RechargeUseCase rechargeUseCase;
   AddBeneficiaryUseCase addBeneficiaryUseCase;
   GetBeneficiariesUseCase getBeneficiariesUseCase;
+
   RechargeBloc({
-    required this.rechargeUseCase,
     required this.getBeneficiariesUseCase,
     required this.addBeneficiaryUseCase
   }) : super( RechargeState.initial()) {
@@ -31,7 +32,7 @@ class RechargeBloc extends Bloc<RechargeEvent, RechargeState> {
 
       final result = await addBeneficiaryUseCase.execute(beneficiary: event.beneficiary);
 
-      List<Beneficiary> beneficiariesList = state.beneficiariesList??[];
+      List<BeneficiaryModel> beneficiariesList = state.beneficiariesList??[];
       final list = getBeneficiariesUseCase.execute();
 
 
